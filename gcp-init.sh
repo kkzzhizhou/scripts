@@ -1,5 +1,5 @@
 # GCP一键配置
-pwd='MGkflZhMCGL1'
+pwd=`date +%s | sha256sum | base64 | head -c 16`
 ip=`curl ifconfig.me`
 
 echo -e '\033[32m[info]正在配置Root密码\033[0m'
