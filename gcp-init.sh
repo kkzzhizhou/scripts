@@ -6,8 +6,8 @@ echo -e '\033[32m[info]正在配置Root密码\033[0m'
 echo root:$pwd | sudo chpasswd
 
 echo -e '\033[32m[info]正在配置SSH:允许Root登录\033[0m'
-sudo -s
-sed -i '/^PermitRootLogin/ s/no/yes/' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config
+sed -i '/^PermitRootLogin/ s/prohibit-password/yes/' /etc/ssh/sshd_config
 systemctl restart sshd
 
 echo -e '\033[32m[info]正在配置SSH:配置免密登录\033[0m'
@@ -22,6 +22,7 @@ echo -e '\033[32m[info]正在安装常用工具\033[0m'
 yum -y install wget screen vim lrzsz
 
 echo -e '\033[32m[info]正在开启BBR\033[0m'
+cd ~
 wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 /bin/rm /root/bbr.sh
 
