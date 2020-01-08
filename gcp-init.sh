@@ -2,6 +2,10 @@
 pwd=`date +%s | sha256sum | base64 | head -c 16`
 ip=`curl ifconfig.me`
 
+echo -e '\033[32m[info]正在安装常用工具\033[0m'
+apt -y update
+apt -y install wget screen vim lrzsz
+
 echo -e '\033[32m[info]正在配置Root密码\033[0m'
 echo root:$pwd | sudo chpasswd
 
@@ -17,10 +21,6 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvGEGWvpr/m6chVr4WlexoUvwURLqWDcLf4TxOnGsDgj8
 EOF
 chmod 600 /root/.ssh
 chmod 600 /root/.ssh/authorized_keys
-
-echo -e '\033[32m[info]正在安装常用工具\033[0m'
-apt -y update
-apt -y install wget screen vim lrzsz
 
 echo -e '\033[32m[info]配置完成\033[0m'
 echo -e "\033[32m  IP：$ip  \033[0m"
