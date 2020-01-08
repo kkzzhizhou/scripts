@@ -19,6 +19,7 @@ chmod 600 /root/.ssh
 chmod 600 /root/.ssh/authorized_keys
 
 echo -e '\033[32m[info]正在安装常用工具\033[0m'
+apt -y update
 apt -y install wget screen vim lrzsz
 
 echo -e '\033[32m[info]配置完成\033[0m'
