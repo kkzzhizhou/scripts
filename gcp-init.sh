@@ -22,7 +22,7 @@ echo -e '\033[32m[info]正在安装常用工具\033[0m'
 yum -y install wget screen vim lrzsz
 
 echo -e '\033[32m[info]正在开启BBR\033[0m'
-cd ~
+cd /root
 wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh
 sed -i '/^char=.*/d' ./bbr.sh
 sed -i '/^install_bbr/d' ./bbr.sh
